@@ -8,6 +8,7 @@ import { v2 as cloudinary } from "cloudinary";
 process.env.VERCEL = "1";
 process.env.IMAGE_STORAGE = "cloudinary";
 const { default: app } = await import("../server.js");
+const { default: detectedEntry, app: namedApp } = await import("../src/app.js");
 const { prisma } = await import("../src/common/prisma/connect.prisma.js");
 const { saveImage } = await import("../src/services/upload.service.js");
 const { uploadImage } = await import("../src/common/multer/image.multer.js");
@@ -23,6 +24,9 @@ const png = Buffer.from(
 
 test("Vercel entry exports Express without starting a listener; Swagger redirects and init work", async () => {
   assert.equal(typeof app, "function");
+  assert.equal(typeof detectedEntry, "function");
+  assert.equal(detectedEntry, namedApp);
+  assert.equal(detectedEntry, app);
   const root = await request(app).get("/");
   assert.equal(root.headers.location, "/swagger/");
   const redirect = await request(app).get("/swagger");

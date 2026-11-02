@@ -36,3 +36,5 @@ app.use((req, res) =>
     .json({ statusCode: 404, message: "API không tồn tại.", content: null }),
 );
 app.use(errorHandler);
+
+export default app;
