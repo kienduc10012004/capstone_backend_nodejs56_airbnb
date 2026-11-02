@@ -100,6 +100,8 @@ Gửi `multipart/form-data`, tên trường file là `formFile`. Ảnh PNG/JPEG/
 
 ## Kiểm thử
 
+File Word hướng dẫn người chấm test trực tiếp Swagger trên bản deploy: [`HUONG_DAN_CHAM_BAI_SWAGGER.docx`](docs/HUONG_DAN_CHAM_BAI_SWAGGER.docx). Trước khi nộp, điền URL deploy, link Swagger, tài khoản ADMIN demo và thông tin liên hệ trong bảng đầu tài liệu. Bản công khai không chứa mật khẩu thật.
+
 Bộ đặc tả Postman gồm đủ 36 API nằm trong [`docs/postman`](docs/postman). Import Collection và Environment theo [`HUONG_DAN_POSTMAN.md`](docs/postman/HUONG_DAN_POSTMAN.md). Bản đọc đầy đủ: [`DAC_TA_API.md`](docs/postman/DAC_TA_API.md). Environment mẫu không chứa mật khẩu ADMIN hoặc token thật. Khi có URL deploy, thay `baseUrl` trong Environment.
 
 Tạo lại đặc tả mẫu khi cập nhật API: `npm.cmd run docs:postman`.
