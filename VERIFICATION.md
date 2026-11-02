@@ -35,5 +35,5 @@ Dữ liệu kiểm thử và ảnh tạo ra được dọn sau khi chạy; khôn
 - Kết quả audit khi cài dependency cuối cùng: **0 vulnerabilities**.
 - Source đã được định dạng bằng Prettier.
 - `.env` và `node_modules` đã được xác minh nằm trong Git ignore.
-- GitHub chờ URL repository, chưa push.
+- Đã push source lên nhánh `main` của https://github.com/kienduc10012004/capstone_backend_nodejs56_airbnb. Đã kiểm tra các file commit không chứa giá trị bí mật từ .env local.
 - Chưa deploy theo yêu cầu.

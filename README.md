@@ -131,6 +131,6 @@ Prisma schema đóng vai trò mô hình dữ liệu; không tạo thêm model tr
 
 ## GitHub, quản lý task và deploy
 
-- Chưa push GitHub khi chưa có repository đích; không đưa `.env`, `node_modules` hoặc ảnh upload vào Git.
-- Theo dõi tiến độ tại `TASKS.csv` (mở bằng Excel) và `../huonglam.md`.
+- Source: https://github.com/kienduc10012004/capstone_backend_nodejs56_airbnb (nhánh `main`). Không đưa `.env`, `node_modules` hoặc ảnh upload vào Git.
+- Theo dõi tiến độ tại `TASKS.csv` (mở bằng Excel). File kế hoạch `huonglam.md` được lưu ở thư mục cha trong workspace gốc.
 - Deploy thực hiện sau khi hoàn tất và kiểm thử, theo thống nhất của người dùng.

@@ -9,5 +9,5 @@
 "API","Bình luận 5 API","Hoàn thành","Chủ sở hữu hoặc ADMIN"
 "Chất lượng","Kiểm thử đủ 36 API và lỗi nghiệp vụ","Hoàn thành","8 tests pass; 0 fail"
 "Tài liệu","README và Swagger nội bộ","Hoàn thành","Kết quả tại VERIFICATION.md"
-"GitHub","Đưa source lên repository","Chờ thông tin","Cần URL repo từ người dùng"
+"GitHub","Đưa source lên repository","Hoàn thành","kienduc10012004/capstone_backend_nodejs56_airbnb; main"
 "Triển khai","Deploy backend","Để sau","Chỉ sau khi hoàn thành và kiểm thử"
