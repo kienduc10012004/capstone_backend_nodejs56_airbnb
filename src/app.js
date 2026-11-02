@@ -9,6 +9,9 @@ import { errorHandler } from "./common/middlewares/error.middleware.js";
 export const app = express();
 app.disable("x-powered-by");
 app.use(cors());
+if (process.env.VERCEL) app.set("trust proxy", 1);
+app.get("/", (req, res) => res.redirect("/swagger/"));
+app.get(/^\/swagger$/, (req, res) => res.redirect("/swagger/"));
 app.use(
   express.json({
     limit: "1mb",

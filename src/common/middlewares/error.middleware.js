@@ -2,6 +2,7 @@ import multer from "multer";
 import { ZodError } from "zod";
 import { validationMessage } from "../helpers/validation-message.helper.js";
 import { AppError } from "../helpers/app-error.helper.js";
+import { maxImageSizeMb } from "../constants/app.constant.js";
 
 export function errorHandler(error, req, res, next) {
   let statusCode = error.statusCode || error.status || 500;
@@ -15,7 +16,7 @@ export function errorHandler(error, req, res, next) {
   } else if (error instanceof multer.MulterError) {
     statusCode = 400;
     const uploadMessages = {
-      LIMIT_FILE_SIZE: "Dung lượng ảnh không được vượt quá 5 MB.",
+      LIMIT_FILE_SIZE: `Dung lượng ảnh không được vượt quá ${maxImageSizeMb} MB.`,
       LIMIT_FILE_COUNT: "Chỉ được tải lên một ảnh cho mỗi yêu cầu.",
       LIMIT_UNEXPECTED_FILE: "Chỉ được tải lên một ảnh trong trường formFile.",
       LIMIT_FIELD_COUNT:

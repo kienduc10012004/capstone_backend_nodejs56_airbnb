@@ -8,7 +8,11 @@ const adapter = new PrismaMariaDb({
   port: Number(url.port || 3306),
   user: decodeURIComponent(url.username),
   password: decodeURIComponent(url.password),
-  database: url.pathname.slice(1),
-  connectionLimit: 10,
+  database: decodeURIComponent(url.pathname.slice(1)),
+  connectionLimit: Number(
+    process.env.DB_CONNECTION_LIMIT || (process.env.VERCEL ? 3 : 10),
+  ),
+  connectTimeout: 10000,
+  ...(process.env.DB_SSL === "true" ? { ssl: true } : {}),
 });
 export const prisma = new PrismaClient({ adapter });

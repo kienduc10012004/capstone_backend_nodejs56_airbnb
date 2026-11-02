@@ -1,5 +1,14 @@
 # Kết quả kiểm tra — 02/11/2026
 
+## Chuẩn bị Vercel
+
+- Build sinh Prisma Client và copy tài nguyên Swagger vào public/swagger cho CDN.
+- Entry server.js export Express trên Vercel, giữ listener khi chạy local.
+- Chế độ ảnh Cloudinary dùng URL HTTPS, giới hạn 3 MB; local vẫn 5 MB.
+- Có script dùng .env.deploy.local để migrate/seed database online riêng, không ghi đè .env local.
+- Kiểm thử: **19 pass, 0 fail**, bao gồm 36 API, Postman, export Vercel, Swagger và nhánh lưu ảnh Cloudinary dùng mock.
+- Chưa gọi Cloudinary thật và chưa deploy vào tài khoản Vercel/Railway vì người dùng cần tự cấu hình dịch vụ. Chỉ xác nhận build và kiểm thử local, không khẳng định đã triển khai thành công.
+
 ## Bộ đặc tả Postman
 
 - Có Collection v2.1 với 6 nhóm và đúng 36 cặp method/path, đối chiếu với Swagger tham chiếu.

@@ -1,10 +1,7 @@
-import { readFileSync } from "node:fs";
-import path from "node:path";
-import { projectRoot } from "../constants/app.constant.js";
+import reference from "../../../swagger-reference.json" with { type: "json" };
+import { maxImageSizeMb } from "../constants/app.constant.js";
 
-export const swaggerDocument = JSON.parse(
-  readFileSync(path.join(projectRoot, "swagger-reference.json"), "utf8"),
-);
+export const swaggerDocument = structuredClone(reference);
 swaggerDocument.info = {
   title: "BC95 Airbnb API",
   version: "1.0.0",
@@ -23,6 +20,10 @@ for (const [route, methods] of Object.entries(swaggerDocument.paths)) {
   for (const [method, operation] of Object.entries(methods)) {
     if (operation.parameters.some((parameter) => parameter.in === "body")) {
       operation.consumes = ["application/json"];
+    }
+    for (const parameter of operation.parameters) {
+      if (parameter.type === "file")
+        parameter.description = `Ảnh PNG, JPEG hoặc WebP, tối đa ${maxImageSizeMb} MB.`;
     }
     operation.parameters = operation.parameters.filter(
       (parameter) => !["tokenCybersoft", "token"].includes(parameter.name),

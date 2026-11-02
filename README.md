@@ -2,6 +2,8 @@
 
 Backend Express theo cấu trúc dự án mẫu: `routers → controllers → services → Prisma → MySQL`. Bao gồm 36 API theo Swagger chính thức; không yêu cầu token CyberSoft. Chưa deploy.
 
+Source đã được chuẩn bị cho Vercel + MySQL Railway + Cloudinary. Hướng dẫn từng bước: [`docs/DEPLOY_VERCEL.md`](docs/DEPLOY_VERCEL.md). Chế độ local giữ nguyên; trên Vercel ảnh lưu Cloudinary, giới hạn 3 MB thay vì 5 MB của local.
+
 ## Yêu cầu
 
 - Node.js 22.12+ hoặc Node.js 24 và npm.

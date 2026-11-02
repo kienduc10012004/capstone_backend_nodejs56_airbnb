@@ -1,9 +1,10 @@
 import multer from "multer";
 import { AppError } from "../helpers/app-error.helper.js";
+import { maxImageSizeMb } from "../constants/app.constant.js";
 
 export const uploadImage = multer({
   storage: multer.memoryStorage(),
-  limits: { fileSize: 5 * 1024 * 1024, files: 1, fields: 0 },
+  limits: { fileSize: maxImageSizeMb * 1024 * 1024, files: 1, fields: 0 },
 }).single("formFile");
 
 export function imageExtension(file) {
