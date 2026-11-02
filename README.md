@@ -100,6 +100,10 @@ Gửi `multipart/form-data`, tên trường file là `formFile`. Ảnh PNG/JPEG/
 
 ## Kiểm thử
 
+Bộ đặc tả Postman gồm đủ 36 API nằm trong [`docs/postman`](docs/postman). Import Collection và Environment theo [`HUONG_DAN_POSTMAN.md`](docs/postman/HUONG_DAN_POSTMAN.md). Bản đọc đầy đủ: [`DAC_TA_API.md`](docs/postman/DAC_TA_API.md). Environment mẫu không chứa mật khẩu ADMIN hoặc token thật. Khi có URL deploy, thay `baseUrl` trong Environment.
+
+Tạo lại đặc tả mẫu khi cập nhật API: `npm.cmd run docs:postman`.
+
 Sau khi MySQL đã chạy, migration và seed xong:
 
 ```powershell

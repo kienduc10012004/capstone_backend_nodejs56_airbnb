@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "docs:postman": "node scripts/build-postman.js",
     "start": "node server.js",
     "dev": "node --watch server.js",
     "db:generate": "prisma generate",

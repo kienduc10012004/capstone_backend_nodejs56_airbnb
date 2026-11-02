@@ -1,5 +1,15 @@
 # Kết quả kiểm tra — 02/11/2026
 
+## Bộ đặc tả Postman
+
+- Có Collection v2.1 với 6 nhóm và đúng 36 cặp method/path, đối chiếu với Swagger tham chiếu.
+- Có Environment mẫu, hướng dẫn sử dụng và đặc tả Markdown đầy đủ tại `docs/postman`.
+- Mỗi request có bảng tham số, điều kiện, quyền truy cập, body (nếu có), response thành công và lỗi minh họa.
+- Đã thực thi các request và scripts từ Collection theo luồng hướng dẫn qua HTTP với Supertest, MySQL thật và mô phỏng phần API Postman sandbox mà scripts sử dụng; không tuyên bố đã chạy qua giao diện Postman hoặc Newman.
+- Đã kiểm tra lưu riêng token ADMIN/USER, tự lưu ID, upload và dọn dữ liệu do kiểm thử tạo ra.
+- Environment mẫu không chứa thông tin ADMIN thật hoặc token có hiệu lực. Các response mẫu là minh họa, không phải bằng chứng deploy.
+- Toàn bộ kiểm thử sau bổ sung: **16 tests pass, 0 fail**.
+
 ## Cập nhật thông báo tiếng Việt
 
 - Toàn bộ lỗi validation được diễn đạt bằng tiếng Việt, kèm tên trường dễ hiểu.
