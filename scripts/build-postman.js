@@ -681,7 +681,7 @@ const collection = {
     schema:
       "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     description:
-      "Đặc tả API backend Airbnb theo source hiện tại. 6 nhóm, 36 request; mô tả tiếng Việt, bảng tham số, request và response mẫu. Import Environment mẫu và đọc HUONG_DAN_POSTMAN.md trước khi chạy. Thực hiện thủ công theo thứ tự trong hướng dẫn; không chạy toàn bộ Collection theo thứ tự hiển thị vì có các thao tác xóa và cần đăng nhập cả ADMIN/USER. Chưa deploy: baseUrl mặc định localhost. Không chứa bí mật thực tế.",
+      "Đặc tả API backend Airbnb theo source hiện tại. 6 nhóm, 36 request; mô tả tiếng Việt, bảng tham số, request và response mẫu. Import Environment mẫu và đọc DAC_TA_API.md trước khi chạy. Thực hiện thủ công theo thứ tự trong hướng dẫn; không chạy toàn bộ Collection theo thứ tự hiển thị vì có các thao tác xóa và cần đăng nhập cả ADMIN/USER. Chưa deploy: baseUrl mặc định localhost. Không chứa bí mật thực tế.",
   },
   event: [
     {
