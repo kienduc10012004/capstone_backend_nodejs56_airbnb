@@ -5,6 +5,7 @@ import { uploadDirectory } from "./common/constants/app.constant.js";
 import rootRouter from "./routers/root.router.js";
 import { swaggerDocument } from "./common/swagger/init.swagger.js";
 import { errorHandler } from "./common/middlewares/error.middleware.js";
+import { registerSwaggerAssets } from "./common/swagger/assets.swagger.js";
 
 export const app = express();
 app.disable("x-powered-by");
@@ -28,6 +29,7 @@ app.use(
   }),
 );
 app.get("/swagger.json", (req, res) => res.json(swaggerDocument));
+registerSwaggerAssets(app);
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use("/api", rootRouter);
 app.use((req, res) =>

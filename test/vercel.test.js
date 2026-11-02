@@ -44,6 +44,36 @@ test("Vercel entry exports Express without starting a listener; Swagger redirect
   );
 });
 
+test("Swagger assets return JavaScript/CSS instead of HTML without relying on express.static", async () => {
+  const assetOnly = express();
+  const { registerSwaggerAssets } =
+    await import("../src/common/swagger/assets.swagger.js");
+  registerSwaggerAssets(assetOnly);
+  assetOnly.use((req, res) =>
+    res.type("html").send("<!DOCTYPE html><html></html>"),
+  );
+  for (const [name, type, marker] of [
+    ["swagger-ui-bundle.js", /javascript/, "SwaggerUIBundle"],
+    [
+      "swagger-ui-standalone-preset.js",
+      /javascript/,
+      "SwaggerUIStandalonePreset",
+    ],
+    ["swagger-ui.css", /text\/css/, ".swagger-ui"],
+  ]) {
+    const result = await request(assetOnly).get(`/swagger/${name}`);
+    assert.equal(result.status, 200);
+    assert.match(result.headers["content-type"], type);
+    assert.ok(result.text.includes(marker));
+    assert.ok(!result.text.startsWith("<!DOCTYPE"));
+  }
+  for (const name of ["favicon-16x16.png", "favicon-32x32.png"]) {
+    const result = await request(assetOnly).get(`/swagger/${name}`);
+    assert.equal(result.status, 200);
+    assert.match(result.headers["content-type"], /image\/png/);
+  }
+});
+
 test("Cloudinary upload persists HTTPS URL and removes only newly uploaded image if DB update fails", async () => {
   const previous = Object.fromEntries(
     [
