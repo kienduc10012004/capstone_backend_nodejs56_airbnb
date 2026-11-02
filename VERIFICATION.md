@@ -1,5 +1,12 @@
 # Kết quả kiểm tra — 02/11/2026
 
+## Cập nhật thông báo tiếng Việt
+
+- Toàn bộ lỗi validation được diễn đạt bằng tiếng Việt, kèm tên trường dễ hiểu.
+- Phân biệt thông tin bắt buộc, chuỗi rỗng, sai kiểu dữ liệu, giới hạn số/ký tự, định dạng email/ngày giờ và vai trò.
+- Thông báo upload, JSON sai, nội dung quá lớn và lỗi thư viện phía client được chuẩn hóa bằng tiếng Việt.
+- Kiểm thử sau cập nhật: **14 tests pass, 0 fail**, bao gồm luồng đủ 36 API và các ca kiểm tra thông báo tiếng Việt.
+
 ## Môi trường đã chạy
 
 - Node.js `v24.18.0`.

@@ -28,7 +28,10 @@ test("JSON variants from reference Swagger are parsed before signup validation",
       .set("Content-Type", contentType)
       .send(JSON.stringify({ name: "Content type regression" }));
     assert.equal(response.status, 400);
-    assert.ok(response.body.message.includes("email:"), response.body.message);
+    assert.ok(
+      response.body.message.includes("Địa chỉ email là thông tin bắt buộc."),
+      response.body.message,
+    );
     assert.ok(
       !response.body.message.includes("expected object"),
       response.body.message,
