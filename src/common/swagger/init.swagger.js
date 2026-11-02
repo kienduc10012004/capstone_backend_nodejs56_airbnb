@@ -21,6 +21,9 @@ swaggerDocument.securityDefinitions = {
 };
 for (const [route, methods] of Object.entries(swaggerDocument.paths)) {
   for (const [method, operation] of Object.entries(methods)) {
+    if (operation.parameters.some((parameter) => parameter.in === "body")) {
+      operation.consumes = ["application/json"];
+    }
     operation.parameters = operation.parameters.filter(
       (parameter) => !["tokenCybersoft", "token"].includes(parameter.name),
     );
