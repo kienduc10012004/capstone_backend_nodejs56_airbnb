@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model NguoiDung {
+  id        Int         @id @default(autoincrement())
+  name      String      @db.VarChar(255)
+  email     String      @unique @db.VarChar(255)
+  password  String      @map("pass_word") @db.VarChar(255)
+  phone     String      @db.VarChar(30)
+  birthday  String      @map("birth_day") @db.VarChar(30)
+  gender    Boolean
+  role      String      @default("USER") @db.VarChar(10)
+  avatar    String      @default("") @db.VarChar(500)
+  bookings  DatPhong[]
+  comments  BinhLuan[]
+}
+
+model ViTri {
+  id        Int     @id @default(autoincrement())
+  tenViTri  String  @map("ten_vi_tri") @db.VarChar(255)
+  tinhThanh String  @map("tinh_thanh") @db.VarChar(255)
+  quocGia   String  @map("quoc_gia") @db.VarChar(255)
+  hinhAnh   String  @default("") @map("hinh_anh") @db.VarChar(500)
+  rooms     Phong[]
+}
+
+model Phong {
+  id        Int       @id @default(autoincrement())
+  tenPhong  String    @map("ten_phong") @db.VarChar(255)
+  khach     Int
+  phongNgu  Int       @map("phong_ngu")
+  giuong    Int
+  phongTam  Int       @map("phong_tam")
+  moTa      String    @map("mo_ta") @db.Text
+  giaTien   Int       @map("gia_tien")
+  mayGiat   Boolean   @map("may_giat")
+  banLa     Boolean   @map("ban_la")
+  tivi      Boolean
+  dieuHoa   Boolean   @map("dieu_hoa")
+  wifi      Boolean
+  bep       Boolean
+  doXe      Boolean   @map("do_xe")
+  hoBoi     Boolean   @map("ho_boi")
+  banUi     Boolean   @map("ban_ui")
+  maViTri   Int       @map("ma_vi_tri")
+  hinhAnh   String    @default("") @map("hinh_anh") @db.VarChar(500)
+  location  ViTri     @relation(fields: [maViTri], references: [id], onDelete: Restrict)
+  bookings  DatPhong[]
+  comments  BinhLuan[]
+  @@index([maViTri])
+}
+
+model DatPhong {
+  id           Int       @id @default(autoincrement())
+  maPhong      Int       @map("ma_phong")
+  ngayDen      DateTime  @map("ngay_den") @db.DateTime(3)
+  ngayDi       DateTime  @map("ngay_di") @db.DateTime(3)
+  soLuongKhach Int       @map("so_luong_khach")
+  maNguoiDung  Int       @map("ma_nguoi_dat")
+  room         Phong     @relation(fields: [maPhong], references: [id], onDelete: Restrict)
+  user         NguoiDung @relation(fields: [maNguoiDung], references: [id], onDelete: Restrict)
+  @@index([maPhong, ngayDen, ngayDi])
+  @@index([maNguoiDung])
+}
+
+model BinhLuan {
+  id               Int       @id @default(autoincrement())
+  maPhong          Int       @map("ma_phong")
+  maNguoiBinhLuan   Int       @map("ma_nguoi_binh_luan")
+  ngayBinhLuan     DateTime  @map("ngay_binh_luan") @db.DateTime(3)
+  noiDung          String    @map("noi_dung") @db.Text
+  saoBinhLuan      Int       @map("sao_binh_luan")
+  room             Phong     @relation(fields: [maPhong], references: [id], onDelete: Restrict)
+  user             NguoiDung @relation(fields: [maNguoiBinhLuan], references: [id], onDelete: Restrict)
+  @@index([maPhong])
+  @@index([maNguoiBinhLuan])
+}
